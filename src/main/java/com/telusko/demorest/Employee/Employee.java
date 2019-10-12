@@ -154,7 +154,6 @@ public class Employee
 	@Override
 	public String toString()
 	{
-		// TODO Auto-generated method stub
 		return id + firstName + lastName + email + phoneNo;
 	}
 
