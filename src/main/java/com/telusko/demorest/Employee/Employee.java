@@ -5,28 +5,25 @@ import java.util.Date;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class Employee
-{
+public class Employee {
 	private int id;
 	private String firstName;
 	private String lastName;
 	private String email;
 	private String phoneNo;
-	private Date hireDate;
+	private java.sql.Date hireDate;
 	private String jobId;
-	private int salary;
-	private int commissionPct;
+	private double salary;
+	private double commissionPct;
 	private int managerID;
 	private int departmentId;
 
-	public Employee()
-	{
+	public Employee() {
 
 	}
 
-	public Employee(int id, String firstName, String lastName, String email, String phoneNo, Date hireDate,
-			String jobId, int salary, int commissionPct, int managerID, int departmentId)
-	{
+	public Employee(int id, String firstName, String lastName, String email, String phoneNo, java.sql.Date hireDate,
+			String jobId, double salary, double commissionPct, int managerID, int departmentId) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -40,122 +37,97 @@ public class Employee
 		this.departmentId = departmentId;
 	}
 
-	
-	public int getId()
-	{
+	public int getId() {
 		return id;
 	}
 
-	public void setId(int id)
-	{
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	public String getFirstName()
-	{
+	public String getFirstName() {
 		return firstName;
 	}
 
-	public void setFirstName(String firstName)
-	{
+	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
-	public String getLastName()
-	{
+	public String getLastName() {
 		return lastName;
 	}
 
-	public void setLastName(String lastName)
-	{
+	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 
-	public String getEmail()
-	{
+	public String getEmail() {
 		return email;
 	}
 
-	public void setEmail(String email)
-	{
+	public void setEmail(String email) {
 		this.email = email;
 	}
 
-	public String getPhoneNo()
-	{
+	public String getPhoneNo() {
 		return phoneNo;
 	}
 
-	public void setPhoneNo(String phoneNo)
-	{
+	public void setPhoneNo(String phoneNo) {
 		this.phoneNo = phoneNo;
 	}
 
-	public Date getHireDate()
-	{
+	public java.sql.Date getHireDate() {
 		return hireDate;
 	}
 
-	public void setHireDate(Date hireDate)
-	{
+	public void setHireDate(java.sql.Date hireDate) {
 		this.hireDate = hireDate;
 	}
 
-	public String getJobId()
-	{
+	public String getJobId() {
 		return jobId;
 	}
 
-	public void setJobId(String jobId)
-	{
+	public void setJobId(String jobId) {
 		this.jobId = jobId;
 	}
 
-	public int getSalary()
-	{
+	public double getSalary() {
 		return salary;
 	}
 
-	public void setSalary(int salary)
-	{
+	public void setSalary(double salary) {
 		this.salary = salary;
 	}
 
-	public int getCommissionPct()
-	{
+	public double getCommissionPct() {
 		return commissionPct;
 	}
 
-	public void setCommissionPct(int commissionPct)
-	{
+	public void setCommissionPct(double commissionPct) {
 		this.commissionPct = commissionPct;
 	}
 
-	public int getManagerID()
-	{
+	public int getManagerID() {
 		return managerID;
 	}
 
-	public void setManagerID(int managerID)
-	{
+	public void setManagerID(int managerID) {
 		this.managerID = managerID;
 	}
 
-	public int getDepartmentId()
-	{
+	public int getDepartmentId() {
 		return departmentId;
 	}
 
-	public void setDepartmentId(int departmentId)
-	{
+	public void setDepartmentId(int departmentId) {
 		this.departmentId = departmentId;
 	}
 
 	@Override
-	public String toString()
-	{
-		return id + firstName + lastName + email + phoneNo;
+	public String toString() {
+		return id + " " + firstName + " " + lastName + " " + email + " " + phoneNo;
 	}
 
-	
 }

@@ -3,6 +3,7 @@ package com.telusko.demorest.Employee;
 import java.util.List;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -29,6 +30,15 @@ public class EmployeeResource
 		return repo.getEmployee(id);
 	}
 	
-	
+	@POST
+	public void addEmployees(Employee...employees)
+	{
+		System.out.println("addEmployees");
+		for (Employee employee : employees) {
+			System.out.println(employee);
+		}
+//		System.out.println(employee);
+		repo.createEmployee(employees);
+	}
 	
 }
