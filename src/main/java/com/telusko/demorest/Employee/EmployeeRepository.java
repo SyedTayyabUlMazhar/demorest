@@ -29,7 +29,7 @@ public class EmployeeRepository {
 		}
 	}
 
-	public List<Employee> getAllEmployees() {
+	public List<Employee> getAll() {
 		List<Employee> list = new ArrayList<Employee>();
 
 		String query = "SELECT * FROM employees";
@@ -55,7 +55,7 @@ public class EmployeeRepository {
 
 	}
 
-	public Employee getEmployee(int id)
+	public Employee get(int id)
 
 	{
 		Employee employee = new Employee();
@@ -84,7 +84,7 @@ public class EmployeeRepository {
 
 	}
 
-	public void createEmployee(Employee... employees) {
+	public void create(Employee... employees) {
 		try {
 			for (Employee employee : employees) {
 
@@ -102,13 +102,28 @@ public class EmployeeRepository {
 				preparedStatement.setDouble(9, employee.getCommissionPct());
 				preparedStatement.setInt(10, employee.getManagerID());
 				preparedStatement.setInt(11, employee.getDepartmentId());
-				
+
 				preparedStatement.executeUpdate();
-				
+
 				System.out.println("createEmployee : SUCCESSFULL");
 			}
 		} catch (Exception e) {
 			System.out.println("createEmployee : FAILED : " + e.getMessage());
+			e.printStackTrace();
+		}
+	}
+
+	public void delete(int id) {
+		try {
+			String deleteQuery = "DELETE FROM employees WHERE employee_id=?";
+			PreparedStatement preparedStatement = connection.prepareStatement(deleteQuery);
+			preparedStatement.setInt(1, id);
+
+			preparedStatement.executeUpdate();
+
+			System.out.println("DELTE SUCCESSFUL");
+		} catch (Exception e) {
+			System.out.println("DELTE FAILED : " + e.getMessage());
 			e.printStackTrace();
 		}
 	}

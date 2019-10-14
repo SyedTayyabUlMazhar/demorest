@@ -1,7 +1,5 @@
 package com.telusko.demorest.Employee;
 
-import java.util.Date;
-
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
