@@ -127,4 +127,27 @@ public class EmployeeRepository {
 			e.printStackTrace();
 		}
 	}
+
+	public void update(int id, Employee employee) {
+		try {
+			String sqlString = "UPDATE employees SET " 
+				+ COLUMNS[1] + "='" + employee.getFirstName() + "' "
+				+ COLUMNS[2] + "='" + employee.getLastName() + "' "
+				+ COLUMNS[3] + "='" + employee.getEmail() + "' "
+				+ COLUMNS[4] + "='" + employee.getPhoneNo() + "' "
+				+ COLUMNS[5] + "='" + employee.getHireDate() + "' "
+				+ COLUMNS[6] + "='" + employee.getJobId() + "' "
+				+ COLUMNS[7] + "=" + employee.getSalary() + " "
+				+ COLUMNS[8] + "=" + employee.getCommissionPct() + " "
+				+ COLUMNS[9] + "=" + employee.getManagerID() + " "
+				+ COLUMNS[10] + "=" + employee.getDepartmentId() + " "
+				
+				+ "WHERE " + COLUMNS[0] + "=" + employee.getId();
+		
+			System.out.println("update sqlString = " + sqlString);
+		} catch (Exception e) {
+			System.out.println("repo.update ERROR : " + e.getMessage());
+			e.printStackTrace();
+		}
+	}
 }
