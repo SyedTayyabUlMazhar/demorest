@@ -47,7 +47,7 @@ public class EmployeeResource {
 	}
 
 	@PUT
-	@PathParam("{id}")
+	@Path("{id}")
 	public void update(@PathParam("id") int id, Employee employee)
 	{
 		repo.update(id, employee);
