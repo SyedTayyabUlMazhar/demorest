@@ -67,7 +67,7 @@ public class EmployeeRepository {
 			ResultSet resultSet = statement.executeQuery(query);
 
 			if (resultSet.next()) {
-
+				System.out.println(resultSet.getDate(6));
 				employee = new Employee(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3),
 						resultSet.getString(4), resultSet.getString(5), resultSet.getDate(6), resultSet.getString(7),
 						resultSet.getDouble(8), resultSet.getDouble(9), resultSet.getInt(10), resultSet.getInt(11));
@@ -106,6 +106,7 @@ public class EmployeeRepository {
 				preparedStatement.executeUpdate();
 
 				System.out.println("createEmployee : SUCCESSFULL");
+				System.out.println("createEmployee : date : " + employee.getHireDate() );
 			}
 		} catch (Exception e) {
 			System.out.println("createEmployee : FAILED : " + e.getMessage());
@@ -124,6 +125,37 @@ public class EmployeeRepository {
 			System.out.println("DELTE SUCCESSFUL");
 		} catch (Exception e) {
 			System.out.println("DELTE FAILED : " + e.getMessage());
+			e.printStackTrace();
+		}
+	}
+
+	public void update(int id, Employee employee) {
+		try {
+			String sqlString = "UPDATE employees SET " 
+				+ COLUMNS[1] + "='" + employee.getFirstName() + "', "
+				+ COLUMNS[2] + "='" + employee.getLastName() + "', "
+				+ COLUMNS[3] + "='" + employee.getEmail() + "', "
+				+ COLUMNS[4] + "='" + employee.getPhoneNo() + "', "
+//				+ COLUMNS[5] + "='" + "12-JUL-09" + "', "
+				+ COLUMNS[5] + "="  + "?" + ", "
+				+ COLUMNS[6] + "='" + employee.getJobId() + "', "
+				+ COLUMNS[7] + "=" + employee.getSalary() + ", "
+				+ COLUMNS[8] + "=" + employee.getCommissionPct() + ", "
+				+ COLUMNS[9] + "=" + employee.getManagerID() + ", "
+				+ COLUMNS[10] + "=" + employee.getDepartmentId() + " "
+				
+				+ "WHERE " + COLUMNS[0] + "=" + id;
+		
+			System.out.println("update sqlString = " + sqlString);
+			
+//			Statement update = connection.createStatement();
+//			update.executeUpdate(sqlString);
+			PreparedStatement preparedStatement = connection.prepareStatement(sqlString);
+			preparedStatement.setDate(1, employee.getHireDate());
+			
+			preparedStatement.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("repo.update ERROR : " + e.getMessage());
 			e.printStackTrace();
 		}
 	}
