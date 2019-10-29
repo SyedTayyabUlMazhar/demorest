@@ -56,4 +56,14 @@ public class Student {
 	public void setClass_name(String class_name) {
 		this.class_name = class_name;
 	}
+
+	
+	@Override
+	public String toString()
+	{
+		return "Student [id=" + id + ", first_name=" + first_name + ", last_name=" + last_name + ", age=" + age
+				+ ", class_name=" + class_name + "]";
+	}
+
+	
 }

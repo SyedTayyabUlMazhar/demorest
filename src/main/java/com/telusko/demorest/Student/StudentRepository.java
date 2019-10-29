@@ -66,7 +66,7 @@ public class StudentRepository
 		ResultSet resultSet;
 		try
 		{
-			String query = "SELECT * FROM students WERE id=?";
+			String query = "SELECT * FROM students WHERE id=?";
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, id);
 
@@ -129,7 +129,7 @@ public class StudentRepository
 			preparedStatement.setString(2, student.getLast_name());
 			preparedStatement.setInt(3, student.getAge());
 			preparedStatement.setString(4, student.getClass_name());
-			preparedStatement.setInt(5, student.getId());
+			preparedStatement.setInt(5, id);
 			preparedStatement.executeUpdate();
 		} catch (SQLException e)
 		{
