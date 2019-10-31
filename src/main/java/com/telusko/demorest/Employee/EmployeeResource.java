@@ -51,5 +51,6 @@ public class EmployeeResource {
 	public void update(@PathParam("id") int id, Employee employee)
 	{
 		repo.update(id, employee);
+		System.out.println("UPDATE : id = " + id + "  Employee: " + employee);
 	}
 }

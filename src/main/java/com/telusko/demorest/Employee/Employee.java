@@ -125,7 +125,7 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return id + " " + firstName + " " + lastName + " " + email + " " + phoneNo;
+		return id + " " + firstName + " " + lastName + " " + email + " " + phoneNo + " " + hireDate;
 	}
 
 }
