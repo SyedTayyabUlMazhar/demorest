@@ -1,11 +1,11 @@
 package com.telusko.demorest.Student;
 
 public class Student {
-	int id;
-	String first_name;
-	String last_name;
-	int age;
-	String class_name;
+	private int id;
+	private String first_name;
+	private String last_name;
+	private int age;
+	private String class_name;
 	
 	public Student() {}
 
