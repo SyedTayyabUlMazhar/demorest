@@ -71,7 +71,14 @@ public class StudentRepository
 			preparedStatement.setInt(1, id);
 
 			resultSet = preparedStatement.executeQuery();
-			student = getStudentsFromResultSet(resultSet).get(0);
+			List<Student> studentsWithGivenId = getStudentsFromResultSet(resultSet);
+			if (studentsWithGivenId.size() > 0)
+			{
+				student = studentsWithGivenId.get(0);
+			}
+			else {
+				System.out.println("Student with id : " + id + " not found");
+			}
 		} catch (SQLException e)
 		{
 			printErrorMessage("get(int id)", e.getMessage());
@@ -84,7 +91,7 @@ public class StudentRepository
 	public void remove(int id)
 	{
 		String query = "DELETE FROM students WHERE id=?";
-		
+
 		try
 		{
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -100,13 +107,13 @@ public class StudentRepository
 	public void insert(Student student)
 	{
 		String query = "INSERT INTO students VALUES(?,?,?,?,?)";
-		
+
 		try
 		{
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, student.getId());
 			preparedStatement.setString(2, student.getFirst_name());
-			preparedStatement.setString(3, student.last_name);
+			preparedStatement.setString(3, student.getLast_name());
 			preparedStatement.setInt(4, student.getAge());
 			preparedStatement.setString(5, student.getClass_name());
 			preparedStatement.execute();
@@ -115,13 +122,13 @@ public class StudentRepository
 			printErrorMessage("couldn't add student : " + student, e.getMessage());
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 	public void modify(int id, Student student)
 	{
 		String query = "UPDATE students SET first_name=?, last_name=?, age=?, class_name=? WHERE id=?";
-		
+
 		try
 		{
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -135,9 +142,9 @@ public class StudentRepository
 		{
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 	public List<Student> getStudentsFromResultSet(ResultSet resultSet)
 	{
 		List<Student> students = new ArrayList<Student>();

@@ -19,6 +19,7 @@ public class StudentResource
 	
 	public StudentResource()
 	{
+		System.out.println("StudentResource.java constructor StudentResource() called.");
 		repository = new StudentRepository();
 	}
 
@@ -27,7 +28,7 @@ public class StudentResource
 	@Produces({MediaType.APPLICATION_JSON})
 	public List<Student> getStudents()
 	{
-		System.out.println("getStudents");
+		System.out.println("StudentResource.java method getStudents() called.");
 		return repository.getAll();
 	}
 	
@@ -36,7 +37,7 @@ public class StudentResource
 	@Produces({MediaType.APPLICATION_JSON})
 	public Student getStudent(@PathParam("id") int id)
 	{
-		System.out.println("getStudent");
+		System.out.println("StudentResource.java method getStudent(@PathParam(\"id\") int id) called.");
 		return repository.get(id);
 	}
 	
@@ -44,12 +45,14 @@ public class StudentResource
 	@Path("{id}")
 	public void remove(@PathParam("id") int id)
 	{
+		System.out.println("StudentResource.java method remove(@PathParam(\"id\") int id) called.");
 		repository.remove(id);
 	}
 	
 	@POST
 	public void add(Student student)
 	{
+		System.out.println("StudentResource.java method add(Student student) called.");
 		repository.insert(student);
 	}
 	
@@ -57,6 +60,7 @@ public class StudentResource
 	@Path("{id}")
 	public void update(@PathParam("id") int id, Student student)
 	{
+		System.out.println("StudentResource.java method update(@PathParam(\"id\") int id, Student student) called.");
 		System.out.println("To modify id : " + id + "  New Values : " + student );
 		repository.modify(id, student);
 	}
